@@ -16,18 +16,25 @@ namespace The_Network_Status_Displayer
         {
             InitializeComponent();
         }
-        pingGer mo;
-        pingGer eight;
-        pingGer wows;
-        pingGer wt;
+        pingGer mo = null;
+        pingGer eight = null;
+        pingGer wows = null;
+        pingGer wt = null;
         private void MainWindow_Activated(object sender, EventArgs e)
         {
             CheckForIllegalCrossThreadCalls = false;
-            mo = new pingGer("192.168.0.1", this.PingToModem);
-            eight = new pingGer("8.8.8.8", this.PingTo8888);
-            wows = new pingGer("162.213.60.88", this.PingToWOWS);
-            wt = new pingGer("warthunder.com", this.PingToWT);
-            PingToModem.Text = ("ん？");
+            if (mo == null)
+            {
+                mo = new pingGer("192.168.0.1", this.PingToModem);
+                eight = new pingGer("8.8.8.8", this.PingTo8888);
+                wows = new pingGer("162.213.60.88", this.PingToWOWS);
+                wt = new pingGer("warthunder.com", this.PingToWT);
+            }
+        }
+
+        private void TopMost_CheckedChanged(object sender, EventArgs e)
+        {
+            this.TopMost = TopMostCheckBox.Checked;
         }
     }
 }

@@ -32,6 +32,7 @@
             this.PingTo8888 = new System.Windows.Forms.Label();
             this.PingToWOWS = new System.Windows.Forms.Label();
             this.PingToWT = new System.Windows.Forms.Label();
+            this.TopMostCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // PingToModem
@@ -70,20 +71,34 @@
             this.PingToWT.TabIndex = 0;
             this.PingToWT.Text = "0ms";
             // 
+            // TopMostCheckBox
+            // 
+            this.TopMostCheckBox.AutoSize = true;
+            this.TopMostCheckBox.Location = new System.Drawing.Point(13, 69);
+            this.TopMostCheckBox.Name = "TopMostCheckBox";
+            this.TopMostCheckBox.Size = new System.Drawing.Size(101, 17);
+            this.TopMostCheckBox.TabIndex = 1;
+            this.TopMostCheckBox.Text = "Make Top Most";
+            this.TopMostCheckBox.UseVisualStyleBackColor = true;
+            this.TopMostCheckBox.CheckedChanged += new System.EventHandler(this.TopMost_CheckedChanged);
+            // 
             // MainWindow
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(120, 73);
+            this.BackColor = System.Drawing.SystemColors.Info;
+            this.ClientSize = new System.Drawing.Size(120, 90);
+            this.Controls.Add(this.TopMostCheckBox);
             this.Controls.Add(this.PingToWT);
             this.Controls.Add(this.PingToWOWS);
             this.Controls.Add(this.PingTo8888);
             this.Controls.Add(this.PingToModem);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MainWindow";
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.Text = "Tester";
+            this.Text = "myPing";
             this.Activated += new System.EventHandler(this.MainWindow_Activated);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -96,6 +111,7 @@
         public System.Windows.Forms.Label PingTo8888;
         public System.Windows.Forms.Label PingToWOWS;
         public System.Windows.Forms.Label PingToWT;
+        private System.Windows.Forms.CheckBox TopMostCheckBox;
     }
 }
 

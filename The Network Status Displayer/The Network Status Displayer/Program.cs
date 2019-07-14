@@ -33,8 +33,8 @@ namespace The_Network_Status_Displayer
 
     public class pingGer
     {
-        private const int capacityOfPool = 80;
-        private const int pingPeriod = 50;
+        private const int capacityOfPool = 40;
+        private const int pingPeriod = 200;
         private const float lerpAverageWeight = 0.5f;
         int avgPing = 810;
         string ip;
@@ -57,12 +57,12 @@ namespace The_Network_Status_Displayer
         private void continuousLoop()
         {
             ThreadStart pingItt = new ThreadStart(pingIt);
-            while (true)
+            while (myLabel.Parent != null)
             {
                 avgPing = (int) pingPool.Average();
-                float whiteLevel = 255f * Math.Max((1 - (Math.Min(avgPing, 1919) / (float)timeout)), 0);
+                float whiteLevel = (255f * Math.Max((1 - (Math.Min(avgPing, 1919) / (float)timeout)), 0)) * (1-lerpAverageWeight) + (myLabel.BackColor.G * lerpAverageWeight);
                 myLabel.BackColor = Color.FromArgb(255, (int)whiteLevel, (int)whiteLevel);
-                myLabel.Text = myLabel.Name + ":\t"+ avgPing + " ms";
+                myLabel.Text = myLabel.Name + ": \t"+ avgPing + " ms"; 
                 Thread.Sleep(pingPeriod);
                 (new Thread(pingItt)).Start();
 
